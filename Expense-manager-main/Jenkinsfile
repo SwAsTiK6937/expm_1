@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    triggers {
+        githubPush()
+    }
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/SwAsTiK6937/expm_1.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'echo Installing dependencies...'
+            }
+        }
+
+        stage('Build Project') {
+            steps {
+                sh 'echo Building Expense Tracker project...'
+            }
+        }
+
+        stage('Build Success') {
+            steps {
+                echo 'Build completed successfully!'
+            }
+        }
+
+    }
+}
